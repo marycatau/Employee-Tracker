@@ -58,7 +58,7 @@ class QuestionsHelper{
             }
         }
         
-        console.log('The new role is:'+ newrole.title + newrole.Salary + newrole.department+newrole.departId);
+        //console.log('The new role is:'+ newrole.title + newrole.Salary + newrole.department+newrole.departId);
         return newrole;
     }
 
@@ -67,7 +67,7 @@ class QuestionsHelper{
         for (var i=0; i<allRole.length; i++){
             roleList[i] = allRole[i].title;
         }
-        console.log (roleList);
+        //console.log (roleList);
 
         var employeeList=[];
         for (var i=0; i<allEmployee.length; i++){
@@ -75,7 +75,7 @@ class QuestionsHelper{
         }
         employeeList.push('None');
 
-        console.log (employeeList);
+        //console.log (employeeList);
 
 
         var newemployee = await inquirer.prompt([{
@@ -119,7 +119,7 @@ class QuestionsHelper{
 
         if (newemployee.manager==='None') newemployee.managerId=null;
         
-        console.log('The new employee detail is:'+ newemployee.firstname+ newemployee.lastname + newemployee.roleId+newemployee.managerId);
+        //console.log('The new employee detail is:'+ newemployee.firstname+ newemployee.lastname + newemployee.roleId+newemployee.managerId);
         return newemployee;
     }
 
@@ -129,15 +129,14 @@ class QuestionsHelper{
         for (var i=0; i<allRole.length; i++){
             roleList[i] = allRole[i].title;
         }
-        console.log (roleList);
+        //console.log (roleList);
 
         var employeeList=[];
         for (var i=0; i<allEmployee.length; i++){
             employeeList[i] = allEmployee[i].first_name +` `+ allEmployee[i].last_name;
         }
-        //employeeList.push('None');
 
-        console.log (employeeList);
+        //console.log (employeeList);
 
 
         var update = await inquirer.prompt([
@@ -169,7 +168,7 @@ class QuestionsHelper{
             }
         }
         
-        console.log('The update employee detail is:'+ update.employee+update.roleId+update.employeeId+update.title);
+        //console.log('The update employee detail is:'+ update.employee+update.roleId+update.employeeId+update.title);
         return update;
     }
 
