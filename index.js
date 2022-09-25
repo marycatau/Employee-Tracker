@@ -37,15 +37,45 @@ async function mainoperation(option){
       display.displayfunction(result);
       break;
     case 'Add A Departments':
-      //var departname = await question.displayMainMenu();
+      var departname = await question.askForDepartName();
+      //console.log(departname);
+      await accessToDatabase.addADepart(departname);
+      break;
+    case 'Add A Role':
+      var department = await accessToDatabase.displayAllDepart();
+      //console.log(department);
 
+      var newrole = await question.askForRoleName(department);
+      //console.log(newrole);
+      await accessToDatabase.addARole(newrole);
+      break;
 
-    case 'Add A Roles':
 
     case 'Add An Employee':
+      var allRole = await accessToDatabase.viewAllRole();
+      console.log(allRole);
+
+      var allEmployee = await accessToDatabase.viewAllEmployee();
+      console.log(allEmployee);
+
+      var newemployee = await question.askForEmployeeDetail(allRole,allEmployee);
+      console.log(newemployee);
+      await accessToDatabase.addAnEmployee(newemployee);
+      break;
+
 
     case 'Updated An Employee Role':
-      
+      var allRole = await accessToDatabase.viewAllRole();
+      console.log(allRole);
+
+      var allEmployee = await accessToDatabase.viewAllEmployee();
+      console.log(allEmployee);
+
+      var update = await question.askForUpdateEmployeeRole(allRole,allEmployee);
+      console.log(update);
+      await accessToDatabase.updateEmployee(update);
+      break;
+
   }
 
 }
@@ -54,8 +84,9 @@ async function mainoperation(option){
 
 async function Init(){
   renderlogo();
-  while(true){
-  var mainOption = await question.displayMainMenu();
+  var mainOption;
+  while(mainOption !== 'Exit'){
+  mainOption = await question.displayMainMenu();
   //console.log (mainOption);
   await mainoperation(mainOption);
 
