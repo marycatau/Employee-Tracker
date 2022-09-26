@@ -78,7 +78,7 @@ async function mainoperation(option){
       //console.log(allEmployee);
 
       var update = await question.askForUpdateManager(allEmployee);
-      console.log(update);
+      //console.log(update);
       await accessToDatabase.updateManager(update);
       break;
 

@@ -215,7 +215,7 @@ class QuestionsHelper{
           }
       }
       
-      console.log('The manager detail is:'+ update.employee+update1.manager+update.employeeId+update.managerId);
+      //console.log('The manager detail is:'+ update.employee+update1.manager+update.employeeId+update.managerId);
       return update;
   }
 }
