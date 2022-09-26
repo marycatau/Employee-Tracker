@@ -86,6 +86,16 @@ class accessToDatabase{
         return rows;
     }
 
+    static async updateManager(data){
+        const db = await accessToDatabase.connection();
+        //UPDATE employee SET role_id = "strawberry" WHERE id = 1;
+        const sql =`UPDATE employee SET manager_id = "`+data.managerId+`" WHERE id =`+data.employeeId+`;`
+        const [rows, fields] = await db.query(sql);
+        //console.log(rows);
+        console.log('Manager details is updated to database');
+        return rows;
+    }
+
 }
 
 

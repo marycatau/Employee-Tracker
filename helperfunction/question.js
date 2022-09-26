@@ -7,7 +7,7 @@ class QuestionsHelper{
             type: 'rawlist',
             name: 'mainOption',
             message: 'What do you like to do?',
-            choices: ['View All Departments','View All Roles','View All Employee','Add A Departments','Add A Role','Add An Employee','Updated An Employee Role','Exit']
+            choices: ['View All Departments','View All Roles','View All Employee','Add A Departments','Add A Role','Add An Employee','Updated An Employee Role','Update Employee Manager','Exit']
           },
         ]);
         //console.log('You choice is:'+ option.mainOption);
@@ -173,6 +173,51 @@ class QuestionsHelper{
     }
 
 
+    static async askForUpdateManager(allEmployee) {
+
+      var employeeList=[];
+      for (var i=0; i<allEmployee.length; i++){
+          employeeList[i] = allEmployee[i].first_name +` `+ allEmployee[i].last_name;
+      }
+
+      //console.log (employeeList);
+
+
+      var update = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'employee',
+          message: 'Whoose manager do you want to update?',
+          choices: employeeList,
+
+        }
+      ]);
+
+      employeeList.splice(employeeList.indexOf(update.employee),1);
+
+      var update1 = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'manager',
+          message: 'Who is the new manager of the employee?',
+          choices: employeeList,
+
+        }
+      ]);
+
+
+      for (var i=0; i<allEmployee.length; i++){
+          if (allEmployee[i].first_name+` `+allEmployee[i].last_name === update.employee){
+              update.employeeId = allEmployee[i].id
+          }
+          if (allEmployee[i].first_name+` `+allEmployee[i].last_name === update1.manager){
+            update.managerId = allEmployee[i].id
+          }
+      }
+      
+      console.log('The manager detail is:'+ update.employee+update1.manager+update.employeeId+update.managerId);
+      return update;
+  }
 }
 
 module.exports = QuestionsHelper;

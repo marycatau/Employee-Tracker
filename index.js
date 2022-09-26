@@ -73,6 +73,15 @@ async function mainoperation(option){
       await accessToDatabase.updateEmployee(update);
       break;
 
+      case 'Update Employee Manager':
+      var allEmployee = await accessToDatabase.viewAllEmployee();
+      //console.log(allEmployee);
+
+      var update = await question.askForUpdateManager(allEmployee);
+      console.log(update);
+      await accessToDatabase.updateManager(update);
+      break;
+
   }
 
 }
