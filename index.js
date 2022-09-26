@@ -1,7 +1,4 @@
-
-
 const logo = require('asciiart-logo');
-//const config = require('./package.json');
 const question = require('./helperfunction/question');
 const accessToDatabase = require('./helperfunction/accessToDatabase');
 const display = require ('./helperfunction/Display');
